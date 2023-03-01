@@ -16,17 +16,19 @@ public class SingleNumber {
         return ans;
     }
 
-    public int singleNumberArray(int[] nums) {
-        ArrayList<Integer> set = new ArrayList<>();
-
+    public int singleNumber2ForLoop(int[] nums) {
+        int count = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (set.contains(nums[i])) {
-                set.remove(nums[i]);
-            } else {
-                set.add(nums[i]);
+            count = 0;
+            for (int j = 0; j < nums.length; j++) {
+                if (nums[i] == nums[j]) {
+                    count++;
+                }
+            }
+            if (count == 1) {
+                return nums[i];
             }
         }
-
-        return set.iterator().next();
+        return 0;
     }
 }
