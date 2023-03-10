@@ -5,12 +5,21 @@ import java.util.Map;
 
 public class IsomorphicStrings {
     public boolean isIsomorphic(String s, String t) {
-        Map<Character,Integer> map1 = new HashMap<>();
-        Map<Character,Integer> map2 = new HashMap<>();
 
-        for (int i = 0; i <s.length() ; i++) {
-            if(map1.put(s.charAt(i), i) != map2.put(t.charAt(i), i))
+        int map1[]=new int[200];
+        int map2[]=new int[200];
+
+        if(s.length()!=t.length())
+            return false;
+
+
+        for(int i=0;i<s.length();i++)
+        {
+            if(map1[s.charAt(i)]!=map2[t.charAt(i)])
                 return false;
+
+            map1[s.charAt(i)]=i+1;
+            map2[t.charAt(i)]=i+1;
         }
         return true;
     }
